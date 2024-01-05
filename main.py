@@ -20,6 +20,7 @@ async def on_ready():
 
 @bot.command(name="ud")
 async def urban_dictionary(ctx, arg):
+    """function to get definition for a term"""
     await Commands.get_urban_dictionary_definition(ctx, arg)
 
 
