@@ -1,6 +1,5 @@
 from os import getenv
 from dotenv import load_dotenv
-from random import sample
 from src.api.rapid_api_wrapper import request_rapid_api
 from src.exceptions.exceptions import RapidApiException
 from typing import Iterable
@@ -18,13 +17,15 @@ def get_definitions_from_response(response: dict) -> Iterable[str]:
 
     try:
         responses = response["list"]
-        num_samples = MAX_RESPONSES if len(responses) else len(responses)
-        indexes = sample(range(len(responses)), num_samples)
-        for index in indexes:
+        if not response:
+            raise RapidApiException(f"urban dictionary could not get responses")
+
+        indexes = min(len(responses), MAX_RESPONSES)
+        for index in range(indexes):
             response = responses[index]
             definition = response["definition"]
             author = response["author"]
-            messages.append(f"*'{definition}'* - {author}")
+            messages.append(f"*{definition}* - {author}")
 
         return messages
 
