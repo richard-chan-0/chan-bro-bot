@@ -4,3 +4,7 @@ class DiscordBotException(Exception):
 
 class RapidApiException(DiscordBotException):
     pass
+
+
+class UrbanDictionaryException(RapidApiException):
+    pass
