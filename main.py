@@ -1,6 +1,7 @@
 from discord import Intents
 from discord.ext import commands
-import src.discord.bot_commands as Commands
+from src.cogs.urban_dictionary.urban_dictionary import UrbanDictionaryCog
+from src.cogs.messager.messager import MessagerCog
 from logging import getLogger
 from src.config import config
 
@@ -15,12 +16,8 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     logger.info(f"{bot.user.name} has connected to Discord!!")
-
-
-@bot.command(name="ud", help="returns the definition of a term via Urban Dictionary")
-async def urban_dictionary(ctx, arg):
-    """function to get definition for a term"""
-    await Commands.get_urban_dictionary_definition(ctx, arg)
+    await bot.add_cog(UrbanDictionaryCog(bot))
+    await bot.add_cog(MessagerCog(bot))
 
 
 bot.run(config.discord_key)
