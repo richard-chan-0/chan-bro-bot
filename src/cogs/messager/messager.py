@@ -34,4 +34,4 @@ class MessagerCog(commands.Cog):
         if not handler:
             return
 
-        handler()
+        return handler()
