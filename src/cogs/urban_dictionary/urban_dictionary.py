@@ -18,6 +18,9 @@ class UrbanDictionaryCog(
     name="Urban Dictionary",
     description="performs Urban Dictionary queries",
 ):
+    def __init__(self, bot):
+        self.bot = bot
+
     def get_definitions_from_response(self, response: dict) -> Iterable[str]:
         """function to parse definitions into list of difinitions"""
         messages = []
