@@ -3,7 +3,7 @@ from src.config import Config
 import datetime as dt
 from random import randint
 
-night = dt.time(hour=11, minute=30)
+night = dt.time(hour=23, minute=30)
 
 
 class NotificationCog(commands.Cog):
