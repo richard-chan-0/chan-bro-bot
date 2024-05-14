@@ -15,7 +15,7 @@ TOKEN = getenv("DISCORD_TOKEN")
 GENERAL = getenv("GENERAL_CHANNEL_ID")
 VIDEO = getenv("VIDEO_CHANNEL_ID")
 
-config = Config(
+CONFIG = Config(
     api_key=API_KEY,
     discord_key=TOKEN,
     general_channel_id=GENERAL,

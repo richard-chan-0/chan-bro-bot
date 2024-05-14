@@ -2,14 +2,16 @@ from discord import Intents
 from discord.ext import commands
 from src.cogs.urban_dictionary.urban_dictionary import UrbanDictionaryCog
 from src.cogs.messager.messager import MessagerCog
-from src.cogs.notification.notification import GoodNightCog
+from src.cogs.notification.notification import *
 from logging import getLogger
-from src.lib.config import config
+from src.lib.config import CONFIG
 
 logger = getLogger(__name__)
 
 intents = Intents.default()
 intents.message_content = True
+intents.presences = True
+intents.members = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
@@ -24,7 +26,7 @@ async def on_ready():
 
 def main():
     try:
-        bot.run(config.discord_key)
+        bot.run(CONFIG.discord_key)
     except Exception as e:
         logger.error(e)
 
