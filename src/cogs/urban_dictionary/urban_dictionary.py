@@ -1,10 +1,10 @@
-from src.exceptions.exceptions import DiscordBotException
+from src.lib.exceptions import DiscordBotException
 from discord.ext.commands import Context
 from discord.ext import commands
 from logging import getLogger
-from src.api.rapid_api_wrapper import request_rapid_api
-from src.exceptions.exceptions import UrbanDictionaryException
-from src.config import config
+from src.lib.rapid_api_wrapper import request_rapid_api
+from src.lib.exceptions import UrbanDictionaryException
+from src.lib.config import CONFIG
 from typing import Iterable
 
 
@@ -45,7 +45,7 @@ class UrbanDictionaryCog(
         query = {"term": term}
         host = "mashape-community-urban-dictionary.p.rapidapi.com"
         response = await request_rapid_api(
-            key=config.api_key,
+            key=CONFIG.api_key,
             url="https://mashape-community-urban-dictionary.p.rapidapi.com/define",
             host=host,
             query=query,
