@@ -2,8 +2,9 @@ from discord import Intents
 from discord.ext import commands
 from src.cogs.urban_dictionary.urban_dictionary import UrbanDictionaryCog
 from src.cogs.messager.messager import MessagerCog
+from src.cogs.notification.notification import GoodNightCog
 from logging import getLogger
-from src.config import config
+from src.lib.config import config
 
 logger = getLogger(__name__)
 
@@ -17,7 +18,16 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def on_ready():
     logger.info(f"{bot.user.name} has connected to Discord!!")
     await bot.add_cog(UrbanDictionaryCog(bot))
+    await bot.add_cog(GoodNightCog(bot))
     await bot.add_cog(MessagerCog(bot))
 
 
-bot.run(config.discord_key)
+def main():
+    try:
+        bot.run(config.discord_key)
+    except Exception as e:
+        logger.error(e)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,10 +1,10 @@
-from src.exceptions.exceptions import DiscordBotException
+from src.lib.exceptions import DiscordBotException
 from discord.ext.commands import Context
 from discord.ext import commands
 from logging import getLogger
 from src.api.rapid_api_wrapper import request_rapid_api
-from src.exceptions.exceptions import UrbanDictionaryException
-from src.config import config
+from src.lib.exceptions import UrbanDictionaryException
+from src.lib.config import config
 from typing import Iterable
 
 

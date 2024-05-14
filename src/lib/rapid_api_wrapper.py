@@ -1,6 +1,6 @@
 from requests import get
 from logging import getLogger
-from src.exceptions.exceptions import RapidApiException
+from src.lib.exceptions import RapidApiException
 
 logger = getLogger(__name__)
 
