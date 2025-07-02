@@ -4,3 +4,5 @@
 **/*.pyc
 .vscode
 compose.yaml
+.DS_Store
+.pytest_cache

@@ -22,6 +22,7 @@ async def on_ready():
     await bot.add_cog(UrbanDictionaryCog(bot))
     await bot.add_cog(GoodNightCog(bot))
     await bot.add_cog(MessagerCog(bot))
+    # await bot.add_cog(PresenceUpdateCog(bot))
 
 
 def main():
