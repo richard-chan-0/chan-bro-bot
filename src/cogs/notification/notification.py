@@ -32,10 +32,11 @@ class PresenceUpdateCog(commands.Cog):
         self.bot: commands.Bot = bot
         self.channel = self.bot.get_channel(int(CONFIG.general_channel_id))
 
-    def is_online(self, member: Member):
+    async def is_online(self, member: Member):
         if member.status == Status.online:
-            self.channel.send(f"{member.display_name} is online")
+            await self.channel.send(f"{member.display_name} is online")
 
     @commands.Cog.listener()
-    async def on_presence_update(self, before, after):
-        self.is_online(after)
+    async def on_presence_update(self, before: Member, after: Member):
+        # await self.is_online(after)
+        print(after.name, after.activities)
