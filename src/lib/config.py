@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from os import getenv
 from json import loads
 
@@ -10,7 +10,7 @@ class Config:
     general_channel_id: str
     video_channel_id: str
     game_suggestion_url: str
-    steam_ids: list = []
+    steam_ids: list = field(default_factory=list)
 
 
 API_KEY = getenv("RAPID_API_KEY")

@@ -1,6 +1,6 @@
 from discord.ext import commands
 from discord import Message
-from src.cogs.messager.greetings import is_greeting, greet_user
+from src.cogs.greetings import is_greeting, greet_user
 from typing import Iterable, Callable, Tuple
 
 

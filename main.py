@@ -1,8 +1,8 @@
 from discord import Intents
 from discord.ext import commands
-from src.cogs.urban_dictionary.urban_dictionary import UrbanDictionaryCog
-from src.cogs.messager.messager import MessagerCog
-from src.cogs.notification.notification import *
+from src.cogs.urban_dictionary import UrbanDictionaryCog
+from src.cogs.messager import MessagerCog
+from src.cogs.notification import *
 from logging import getLogger
 from src.lib.config import CONFIG
 
