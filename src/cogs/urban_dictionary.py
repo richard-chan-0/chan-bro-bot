@@ -18,5 +18,6 @@ class UrbanDictionaryCog(
     @commands.command()
     async def define_slang(self, ctx: Context, term: str) -> None:
         """get a definition from urban dictionary"""
-        reply_message = get_definition(term)
+        logger.info(f"Received request to define term: {term}")
+        reply_message = await get_definition(term)
         await ctx.reply(reply_message)
