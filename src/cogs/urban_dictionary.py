@@ -1,7 +1,7 @@
 from discord.ext.commands import Context
 from discord.ext import commands
 from logging import getLogger
-from src.service.logic.urban_dictionary import get_definition
+from src.service.logic.urban_dictionary_service import get_definition
 
 
 logger = getLogger(__name__)
@@ -18,5 +18,6 @@ class UrbanDictionaryCog(
     @commands.command()
     async def define_slang(self, ctx: Context, term: str) -> None:
         """get a definition from urban dictionary"""
-        reply_message = get_definition(term)
+        logger.info(f"Received request to define term: {term}")
+        reply_message = await get_definition(term)
         await ctx.reply(reply_message)

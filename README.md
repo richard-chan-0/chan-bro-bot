@@ -67,6 +67,7 @@ pytest
 ## Resources
 
 - [discord.py documentation](https://discordpy.readthedocs.io/en/stable/index.html)
+
 - [Urban Dictionary API on RapidAPI](https://rapidapi.com/mashape/api/urban-dictionary)
 
 ---

@@ -2,7 +2,15 @@ class DiscordBotException(Exception):
     pass
 
 
-class RapidApiException(DiscordBotException):
+class ApiException(DiscordBotException):
+    pass
+
+
+class RapidApiException(ApiException):
+    pass
+
+
+class GameSuggestionExcepion(ApiException):
     pass
 
 
