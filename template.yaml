@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Discord Bot Lambda
+
+Resources:
+  DiscordBot:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/lambda/
+      Handler: app.lambda_handler
+      Runtime: python3.11
+      Environment:
+        Variables:
+          DISCORD_PUBLIC_KEY: "872b83a54e7987d4ef466820f38261d9a95cb52ec19817518b3d49a2294e4181"
+      Layers:
+        - Ref: CommonLayer
+      Events:
+        Interactions:
+          Type: Api
+          Properties:
+            Path: /interactions
+            Method: POST
+      
+
+  CommonLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: CommonLayer
+      Description: Common layer for Discord bot
+      ContentUri: src/layer/
+      CompatibleRuntimes:
+        - python3.11
