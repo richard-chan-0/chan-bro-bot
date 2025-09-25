@@ -1,7 +1,7 @@
 from logging import getLogger
 from typing import Iterable
-from src.lib.config import CONFIG
-from src.service.api.rapid_api_wrapper import request_rapid_api
+from src.bot.config import CONFIG
+from src.lib.rapid_api_wrapper import request_rapid_api
 from src.lib.exceptions import DiscordBotException, UrbanDictionaryException
 
 logger = getLogger(__name__)

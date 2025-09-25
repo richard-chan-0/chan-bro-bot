@@ -1,17 +1,11 @@
-from src.lib.config import CONFIG
+from src.bot.config import CONFIG
 from logging import getLogger
-from src.service.api.game_suggestion_wrapper import get_shared_games
+from src.service.game_suggestion_api.game_suggestion_wrapper import get_shared_games
+from src.service.game_suggestion_api.game_suggestion_adapter import (
+    create_shared_games_response,
+)
 
 logger = getLogger(__name__)
-
-
-def create_shared_games_response(games: list) -> str:
-    if not games:
-        return "No shared games found."
-    response = ""
-    for game in games:
-        response += f"- {game}\n"
-    return response.strip()
 
 
 def get_shared_game_suggestions():

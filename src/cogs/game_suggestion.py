@@ -1,7 +1,9 @@
 from discord.ext.commands import Context
 from discord.ext import commands
 from logging import getLogger
-from src.service.logic.game_suggestion_service import get_shared_game_suggestions
+from src.service.game_suggestion_api.game_suggestion_service import (
+    get_shared_game_suggestions,
+)
 
 logger = getLogger(__name__)
 
