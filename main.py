@@ -1,22 +1,25 @@
-from src.cogs import *
-from logging import getLogger, StreamHandler, Formatter
+from logging import getLogger, StreamHandler, Formatter, basicConfig
 from sys import stdout
-from src.bot.config import CONFIG
-from src.bot.bot import bot
 from dotenv import load_dotenv
 
 load_dotenv()
 
+from src.bot.bot import bot
+from src.bot.config import CONFIG
+from src.cogs import *
+
+basicConfig(
+    level="INFO",
+    handlers=[StreamHandler(stdout)],
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+)
 logger = getLogger(__name__)
-logger.setLevel("INFO")
-handler = StreamHandler(stdout)
-handler.setFormatter(Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s"))
-logger.addHandler(handler)
 
 
 def main():
     try:
-        bot.run(CONFIG.discord_key)
+        logger.info("starting bot...")
+        bot.run(token=CONFIG.discord_key)
     except Exception as e:
         logger.error(e)
 

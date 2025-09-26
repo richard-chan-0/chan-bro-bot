@@ -16,7 +16,13 @@ class GameSuggestionCog(
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
-    async def get_shared_games(self, ctx: Context) -> None:
-        reply_message = get_shared_game_suggestions()
+    @commands.command(
+        name="sharedgames", help="Get shared game suggestions for all players"
+    )
+    async def get_shared_games(self, ctx: Context, *args) -> None:
+        reply_message = f"Args: {args}"
+        if args:
+            reply_message = "args not supported"
+        else:
+            reply_message = get_shared_game_suggestions()
         await ctx.reply(reply_message)

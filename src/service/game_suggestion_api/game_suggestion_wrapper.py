@@ -15,3 +15,15 @@ def get_shared_games(steam_ids: list) -> dict:
     except Exception as err:
         logger.error(err)
         raise GameSuggestionExcepion(err)
+
+
+def get_shared_games_for_all_players():
+    try:
+        api_url = f"{CONFIG.game_suggestion_command_url}/shared"
+        api_response = get(url=api_url)
+        json_response = api_response.json()
+        logger.info("api response: %s", json_response)
+        return json_response
+    except Exception as err:
+        logger.error(err)
+        raise GameSuggestionExcepion(err)
