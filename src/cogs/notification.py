@@ -1,6 +1,6 @@
 from discord.ext import commands, tasks
 from discord import Member, Status
-from src.lib.config import CONFIG
+from src.bot.config import CONFIG
 import datetime as dt
 from zoneinfo import ZoneInfo
 from random import randint

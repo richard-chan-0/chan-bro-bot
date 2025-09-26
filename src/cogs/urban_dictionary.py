@@ -1,7 +1,7 @@
 from discord.ext.commands import Context
 from discord.ext import commands
 from logging import getLogger
-from src.service.logic.urban_dictionary_service import get_definition
+from src.service.urban_dictionary_api.urban_dictionary_service import get_definition
 
 
 logger = getLogger(__name__)

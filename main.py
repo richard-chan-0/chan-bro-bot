@@ -1,43 +1,25 @@
-from discord import Intents
-from discord.ext import commands
-from src.cogs.urban_dictionary import UrbanDictionaryCog
-from src.cogs.messager import MessagerCog
-from src.cogs.game_suggestion import GameSuggestionCog
-from src.cogs.notification import *
-from logging import getLogger, StreamHandler, Formatter
+from logging import getLogger, StreamHandler, Formatter, basicConfig
 from sys import stdout
-from src.lib.config import CONFIG
 from dotenv import load_dotenv
 
 load_dotenv()
 
+from src.bot.bot import bot
+from src.bot.config import CONFIG
+from src.cogs import *
+
+basicConfig(
+    level="INFO",
+    handlers=[StreamHandler(stdout)],
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+)
 logger = getLogger(__name__)
-logger.setLevel("INFO")
-handler = StreamHandler(stdout)
-handler.setFormatter(Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s"))
-logger.addHandler(handler)
-
-intents = Intents.default()
-intents.message_content = True
-intents.presences = True
-intents.members = True
-
-bot = commands.Bot(command_prefix="!", intents=intents)
-
-
-@bot.event
-async def on_ready():
-    logger.info(f"{bot.user.name} has connected to Discord!!")
-    await bot.add_cog(UrbanDictionaryCog(bot))
-    await bot.add_cog(GoodNightCog(bot))
-    await bot.add_cog(MessagerCog(bot))
-    await bot.add_cog(GameSuggestionCog(bot))
-    # await bot.add_cog(PresenceUpdateCog(bot))
 
 
 def main():
     try:
-        bot.run(CONFIG.discord_key)
+        logger.info("starting bot...")
+        bot.run(token=CONFIG.discord_key)
     except Exception as e:
         logger.error(e)
 
